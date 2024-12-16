@@ -1,0 +1,21 @@
+body {
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+
+a {
+    margin-right: 8px;
+    text-decoration: none;
+    color: #000;
+}
+a:hover {
+    cursor:pointer;
+    color: #1212a0;
+}

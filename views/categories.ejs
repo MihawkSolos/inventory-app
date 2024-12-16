@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./categories.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="headerContainer">
+            <h1>Categories</h1>
+            <a href="/new-category">Create New</a>
+        </div>
+        <ul>
+            <% data.forEach(item => { %>
+                <li>
+                    <h3><%= item.name %></h3>
+                    <p><%= item.description %></p>  
+                    <div class="btnContainer">
+                        <button type='button' class="update">Update</button>
+                        <button type='button' class="update">Delete</button>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>

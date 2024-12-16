@@ -3,11 +3,28 @@ body {
     flex-direction: column;
 }
 
+.indexTitle {
+    text-align: center;
+}
+
 .container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.productList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+li {
+    border: 1px solid black;
+    padding: 8px;
+    list-style: none;
+    margin: 16px;
 }
 
 .figureImg {

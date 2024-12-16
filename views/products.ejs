@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./product.css">
     <title></title>
 </head>
 <body>
-    <h1 class="indexTitle">Funko Pops</h1>
+    <div class="headerContainer">
+        <h1 class="productsTitle">Products</h1>
+        <a href="/new-product">Create New</a>
+    </div>
     <div class='container'>
         <ul class="productList">
-            <% data.forEach(figure => { %>
+            <% data.forEach(item => { %>
                 <li>
-                    <h3><%= figure.name %></h3>
-                    <p>Price: $<%= figure.price %></p>         
-                    <img class="figureImg" src='<%= figure.imageurl %>' alt="<%= figure.name %>">
-                    <div>
+                    <h3><%= item.name %></h3>
+                    <p>Price: $<%= item.price %></p>         
+                    <img class="itemImg" src='<%= item.imageurl %>' alt="<%= item.name %>">
+                    <div class="btnContainer">
                         <button type='button' class="update">Update</button>
                         <button type='button' class="update">Delete</button>
                     </div>
