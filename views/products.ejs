@@ -19,8 +19,10 @@
                     <p>Price: $<%= item.price %></p>         
                     <img class="itemImg" src='<%= item.imageurl %>' alt="<%= item.name %>">
                     <div class="btnContainer">
-                        <button type='button' class="update">Update</button>
-                        <button type='button' class="update">Delete</button>
+                        <a href="/products/update/<%= item.id %>">
+                            <button type='button' class="update">Update</button>
+                        </a>
+                        <button type='button' class="delete">Delete</button>
                     </div>
                 </li>
             <% }); %>

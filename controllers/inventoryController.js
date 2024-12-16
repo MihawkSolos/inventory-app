@@ -40,6 +40,34 @@ async function postNewProduct(req,res) {
     res.redirect('/products');
 }
 
+// update 
+async function getProductUpdate(req, res) {
+    const id = req.params.id;
+    const product = await db.getProductById(id);
+    const categories = await db.getCategoryTable();
+
+    res.render('update', {product: product, categories: categories});
+}
+async function postProductUpdate(req, res) {
+    const id = req.params.id;
+    const {name, price, imageurl, category_id} = req.body;
+    console.log(id);
+    
+    console.log(name, price, imageurl, category_id);
+    await db.updateProduct(name, category_id, price, imageurl, id);
+    res.redirect('/products');
+}
+
+async function getCategoryUpdate(req, res) {
+    const id = req.params.id;
+    const category = await db.getCategoryById(id);
+
+    res.render('update', {category: category});
+}
+async function postCategoryUpdate(req, res) {
+    res.redirect('/');
+}
+
 
 async function getIndex (req, res){
     console.log('will display products here');
@@ -56,6 +84,10 @@ module.exports = {
     getNewProduct,
     postNewCategory,
     postNewProduct,
+    getProductUpdate,
+    postProductUpdate,
+    getCategoryUpdate,
+    postCategoryUpdate,
     getIndex,
 }
 
