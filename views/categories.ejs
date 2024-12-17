@@ -18,7 +18,9 @@
                     <h3><%= item.name %></h3>
                     <p><%= item.description %></p>  
                     <div class="btnContainer">
-                        <button type='button' class="update">Update</button>
+                        <a href="/categories/update/<%= item.id %>">
+                            <button type='button' class="update">Update</button>
+                        </a>
                         <button type='button' class="delete">Delete</button>
                     </div>
                 </li>

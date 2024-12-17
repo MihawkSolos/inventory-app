@@ -41,31 +41,37 @@ async function postNewProduct(req,res) {
 }
 
 // update 
-async function getProductUpdate(req, res) {
-    const id = req.params.id;
-    const product = await db.getProductById(id);
-    const categories = await db.getCategoryTable();
+async function getUpdate(req, res) {
 
-    res.render('update', {product: product, categories: categories});
-}
-async function postProductUpdate(req, res) {
-    const id = req.params.id;
-    const {name, price, imageurl, category_id} = req.body;
-    console.log(id);
-    
-    console.log(name, price, imageurl, category_id);
-    await db.updateProduct(name, category_id, price, imageurl, id);
-    res.redirect('/products');
-}
+    const {type, id } = req.params;
 
-async function getCategoryUpdate(req, res) {
-    const id = req.params.id;
-    const category = await db.getCategoryById(id);
+    if(type === 'products'){
+        const product = await db.getProductById(id);
+        const categories = await db.getCategoryTable();
 
-    res.render('update', {category: category});
+        res.render('update', {product: product, categories: categories, type: type});
+    }
+    else if(type === 'categories'){
+        const category = await db.getCategoryById(id);
+
+        res.render('update', {category: category, type: type})
+    }
 }
-async function postCategoryUpdate(req, res) {
-    res.redirect('/');
+async function postUpdate(req, res) {
+    const { type, id } = req.params;
+    if(type === 'products'){
+        const {name, price, imageurl, category_id} = req.body;
+        //console.log(id);
+        //console.log(name, price, imageurl, category_id);
+        await db.updateProduct(name, category_id, price, imageurl, id);
+        res.redirect('/products');
+    }
+    else if (type === 'categories'){
+        const {name, description} = req.body;
+        await db.updateCategory(name, description, id);
+
+        res.redirect('/categories')
+    }
 }
 
 
@@ -84,10 +90,8 @@ module.exports = {
     getNewProduct,
     postNewCategory,
     postNewProduct,
-    getProductUpdate,
-    postProductUpdate,
-    getCategoryUpdate,
-    postCategoryUpdate,
+    getUpdate,
+    postUpdate,
     getIndex,
 }
 

@@ -42,12 +42,21 @@ async function getCategoryById(id) {
     const {rows} = await pool.query("SELECT * FROM Category WHERE id = $1;" ,[id])
     return rows[0];
 }
+async function updateCategory(name, description, id) {
+    await pool.query(
+        `UPDATE Category 
+         SET name = $1, 
+             description = $2
+         WHERE id = $3;`,
+        [name, description, id]
+    );    
+}
 
-async function delCategory(name, description) {
+async function delCategory(name) {
     await pool.query(`
         DELETE FROM Category
-        WHERE name = ${name};
-        `
+        WHERE name = $1;
+        `, [name]
 )}
 
 
@@ -60,6 +69,7 @@ module.exports = {
     getCategoryTable,
     addCategory,
     getCategoryById,
+    updateCategory,
 }
 
 
