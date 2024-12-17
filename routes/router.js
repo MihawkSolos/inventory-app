@@ -11,6 +11,8 @@ router.get('/new-product', controller.getNewProduct);
 router.post('/new-product', controller.postNewProduct);
 router.get('/:type/update/:id', controller.getUpdate);
 router.post('/:type/update/:id', controller.postUpdate);
+router.get('/:type/delete/:id', controller.getDelete);
+router.post('/:type/delete/:id', controller.postDelete);
 //router.get('/:type/update/:id', controller.getCategoryUpdate);
 //router.get('/update/:id'))
 

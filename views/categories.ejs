@@ -21,7 +21,9 @@
                         <a href="/categories/update/<%= item.id %>">
                             <button type='button' class="update">Update</button>
                         </a>
-                        <button type='button' class="delete">Delete</button>
+                        <a href="/categories/delete/<%= item.id %>">
+                            <button type='button' class="delete">Delete</button>
+                        </a>
                     </div>
                 </li>
             <% }) %>

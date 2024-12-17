@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Confirmation</title>
+</head>
+<body>
+    <div>
+        <% if (type === 'products') { %>
+            <!-- Form with DELETE method override -->
+            <form action="/<%= type %>/delete/<%= product.id %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE"> <!-- Method override -->
+                <h3>Are you sure you want to delete <%= product.name %>?</h3>
+                <div>
+                    <button type="submit">Yes</button>
+                    <a href="/products">No</a>
+                </div>
+            </form>
+        <% } else if (type === 'categories') { %>
+            <!-- Form with DELETE method override -->
+            <form action="/<%= type %>/delete/<%= category.id %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE"> <!-- Method override -->
+                <h3>Are you sure you want to delete <%= category.name %>?</h3>
+                <div>
+                    <button type="submit">Yes</button>
+                    <a href="/categories">No</a>
+                </div>
+            </form>
+        <% } %>
+    </div>
+</body>
+</html>

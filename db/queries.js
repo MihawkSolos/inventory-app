@@ -26,6 +26,13 @@ async function getProductById(id) {
     const {rows} = await pool.query("SELECT * FROM FunkoPop WHERE id = $1;" ,[id])
     return rows[0];
 }
+async function delProductById(id) {
+    await pool.query(
+        `DELETE FROM FunkoPop 
+         WHERE id = $1;`,
+        [id]
+    )
+}
 
 async function getCategoryTable() {
     const { rows } = await pool.query("SELECT * FROM Category")
@@ -51,12 +58,11 @@ async function updateCategory(name, description, id) {
         [name, description, id]
     );    
 }
-
-async function delCategory(name) {
+async function delCategoryById(id) {
     await pool.query(`
         DELETE FROM Category
-        WHERE name = $1;
-        `, [name]
+        WHERE id = $1;
+        `, [id]
 )}
 
 
@@ -66,10 +72,12 @@ module.exports = {
     addProduct,
     getProductById,
     updateProduct,
+    delProductById,
     getCategoryTable,
     addCategory,
     getCategoryById,
     updateCategory,
+    delCategoryById,
 }
 
 

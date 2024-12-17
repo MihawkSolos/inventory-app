@@ -1,6 +1,7 @@
 const db = require('../db/queries');
 
 
+
 async function getHome(req, res) {
     //res.send('nothing going to be on this home page until user clicks either categories or products.');
     res.render('homePage');
@@ -74,6 +75,32 @@ async function postUpdate(req, res) {
     }
 }
 
+async function getDelete(req, res) {
+    const { type, id } = req.params;
+    if(type === 'products'){
+        const product = await db.getProductById(id);
+        
+        res.render('delete', {type, id, product});
+    } 
+    else if (type === 'categories'){
+        const category = await db.getCategoryById(id);
+        
+        res.render('delete', {type, id, category});
+    }
+}
+async function postDelete(req, res) {
+    const { type, id } = req.params;
+    if (type === 'products'){
+        console.log(id);
+        await db.delProductById(id);
+        res.redirect('/products');
+    }
+    else if (type === 'categories'){
+        console.log(id);
+        await db.delCategoryById(id);
+        res.redirect('/categories');
+    }
+}
 
 async function getIndex (req, res){
     console.log('will display products here');
@@ -92,6 +119,8 @@ module.exports = {
     postNewProduct,
     getUpdate,
     postUpdate,
+    getDelete,
+    postDelete,
     getIndex,
 }
 
