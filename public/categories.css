@@ -24,6 +24,10 @@ ul {
     gap: 25px;
 }
 
+.newLink {
+    padding-right: 10px;
+}
+
 li {
     border: 2px solid black;
     border-radius: 10px;

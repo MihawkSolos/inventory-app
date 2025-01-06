@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./categories.css">
-    <title>Document</title>
+    <title>Categories</title>
 </head>
 <body>
     <div>
         <div class="headerContainer">
             <h1>Categories</h1>
-            <a href="/new-category">Create New</a>
+            <div>
+                <a class="newLink" href="/new-category">Create New</a>
+                <a href="/"> Home</a>
+            </div>
         </div>
         <ul>
             <% data.forEach(item => { %>
